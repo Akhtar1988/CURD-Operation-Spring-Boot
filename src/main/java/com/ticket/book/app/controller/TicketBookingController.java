@@ -5,7 +5,6 @@ import com.ticket.book.app.services.TicketBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PostUpdate;
 import java.util.Optional;
 
 @RestController
@@ -30,10 +29,12 @@ public class TicketBookingController {
     public Iterable<Ticket> getAllBookedTickets(){
         return tService.getAllTicket();
     }
+
     @DeleteMapping(value = "/ticket/{ticketId}")
     public void deleteTicket(@PathVariable("ticketId") Integer ticketId){
         tService.removeTicket(ticketId);
     }
+
     @PutMapping(value = "/ticket/{ticketId}/{email:.+}")
     public Ticket updateTicket(@PathVariable("ticketId") Integer ticketId , @PathVariable("email") String email){
        return tService.updateEmail(ticketId , email);

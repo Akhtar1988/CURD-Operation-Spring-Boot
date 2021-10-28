@@ -31,7 +31,7 @@ public class TicketBookingService {
     }
 
     public Ticket updateEmail(Integer ticketId, String email) {
-        Optional<Ticket> ticket = ticketBookingDao.findById(ticketId);
+        var ticket = ticketBookingDao.findById(ticketId);
         ticket.ifPresent(ticket1 -> {
             ticket1.setEmail(email);
             System.out.println("email=====>>" + ticket.get().getEmail());
